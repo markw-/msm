@@ -1,0 +1,8 @@
+- Check file validation command line option
+- output to syslog, logfile, something else
+- Proper error handling (just a bit...)
+- check_url needs to be *MUCH* more sophisticated
+- Check_app 
+- Conf file needs to be parsed properly to get check timeout and check period
+- anything that makes checks go faster
+- Some proper testing needs to be setup
