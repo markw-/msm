@@ -1,0 +1,47 @@
+// Multi-Layer Synthetic Monitor Check list
+// --------------------------------------------------------------------------------
+// Lines begining with "//" are comment lines and are ignored, also blank lines are ignored.
+// Each line consists of comma separated key/value pairs (some required and some optional), which can 
+// appear in any order. The MSM software attempts to ignore formatting differences in the configuration
+// file e.g. use of upper and lower case, additional spaces/tabs and leading or trailing commas. That 
+// said - commas must separate KV pairs appearing on the same line and the KV pair must have the key 
+// first followed by an equals sign ("=") with the value coming after that.
+//
+// Each key can only appear once on each line, if a key appears multiple times the last key read will
+// be the value used.
+// 
+// The keys are:
+// "type"   - One of "application", "URL" or "DB"
+// "result" - Either "alive" or "timed"
+// "target" - Either the application IP address and port (a.b.c.d:xxxx), a URL or the DB connection
+//            string
+// "text"   - Text sent to an Application check or SQL text for a DB check (must be in quotes). 
+//            (Required for a DB check, optional for an application check)
+// "UID"    - A user ID to be used in a check, must be in quotes. (optional) 
+// "PW"     - A password to be used in a check, must be in quotes. (optional) 
+// 
+// It's good practice to group the checks by application group to keep track of which checks apply 
+// to which applications.
+// 
+// Example:
+// // Application A
+// type=Application, result=Timed, target=192.168.2.1:5900, text="test_job_1", UID="testuser", PW="Aht24B!1"
+// type=DB, result=Alive, target=192.168.21.100:5900,, UID = "testuser", PW="Aht24B!1"
+// type=URL, result=timed, target=http://www.bbc.com/news
+//
+// Copyright © 2016 Mark Broughton Wild. All Rights Reserved.
+
+
+// Application A
+type=application, result=timed, target=192.168.2.1:5900, text="test_job_1", UID="testuser", PW="Aht24B!1"
+type=DB, result=Alive, target=192.168.21.100:5900,, UID = "testuser", PW="Aht24B!1"
+type=URL, result=timed, target="http://www.bbc.com/news"
+type=URL, result=Alive, target="http://www.bbc.com/news"
+
+// Application B
+type=URL, result=timed, target="http://www.bbc.com/bbbbbbbb"
+type=URL, result=Alive, target="http://www.bbc.com/bbbbbbbb"
+type=URL, result=timed, target="http://www.gggtttttt.com/"
+type=URL, result=alive, target="http://www.gggtttttt.com/"
+type=DB, result=alive, target=192.168.2.7:3306
+

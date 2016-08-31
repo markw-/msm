@@ -1,0 +1,25 @@
+// Multi-Layer Synthetic Monitor (MSM) Configuration file
+// --------------------------------------------------------------------------------
+// Lines begining with "//" are comment lines and are ignored, also blank lines are ignored.
+// Each line consists of key/value pairs (some required and some optional), which can appear in any order.
+// The MSM software attempts to ignore formatting differences in the configuration file e.g. use of upper 
+// and lower case, additional spaces/tabs and leading or trailing commas. That said - each KV pair must 
+// either appear on a separate line or be separated by commas. Each KV pair must have the key first 
+// followed by an equals sign ("=") with the value coming after that.
+// 
+// If there are any missing keys, or invalid key values, the program will use sensible built-in defaults.
+// 
+// The keys are:
+// "check_period"  - Frequency of the initiation of each check run in seconds. Minimum 10 seconds. No 
+//                   maximum. Default is 300 seconds.
+// "check_timeout" - A check taking longer than the timeout period will be cancelled. Minium 100 
+//                   milliseconds. Maximum is the check_period value, although for larger check_period
+//                   values there will be many cases where the OS settings and protocol standards will
+//                   timeout network connection attempts before the program timeout is reached. Default
+//                   is 1000 milliseconds.
+//
+// Copyright © 2016 Mark Broughton Wild. All Rights Reserved.
+
+
+check_period=300
+check_timeout=100
